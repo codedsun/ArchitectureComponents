@@ -10,7 +10,7 @@ import java.util.Date;
  * Created by suneetsrivastava on 09/01/18.
  */
 
-@Entity
+@Entity(tableName = "todoitem")
 public class DatabaseModel {
 
     @PrimaryKey(autoGenerate = true)
@@ -59,5 +59,13 @@ public class DatabaseModel {
 
     public boolean isTaskDone() {
         return isTaskDone;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setTaskDone(boolean taskDone) {
+        isTaskDone = taskDone;
     }
 }

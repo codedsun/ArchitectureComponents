@@ -16,28 +16,28 @@ import java.util.List;
  */
 
 @Dao
-@TypeConverters(DateConverter.class)
+@TypeConverters({DateConverter.class})
 public interface DAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(DatabaseModel databaseModels);
 
-    @Query("Select *from DatabaseModel")
+    @Query("Select *from todoitem")
     LiveData<List<DatabaseModel>> getAllTask();
 
-    @Query("Select * from DatabaseModel where id = :id")
+    @Query("Select * from todoitem where id = :id")
     LiveData<DatabaseModel> getTaskById(int id);
 
-    @Query("Select * from DatabaseModel where tag = :tag")
+    @Query("Select * from todoitem where tag = :tag")
     LiveData<List<DatabaseModel>> getTaskByTag(String tag);
 
-    @Query("Select * from DatabaseModel where priority = :priority")
+    @Query("Select * from todoitem where priority = :priority")
     LiveData<List<DatabaseModel>> getTaskByPriority(String priority);
 
-    @Query("Select * from DatabaseModel where isTaskDone = :isDone")
+    @Query("Select * from todoitem where isTaskDone = :isDone")
     LiveData<List<DatabaseModel>> getTaskByStatus(Boolean isDone);
 
-    @Query("Delete from DatabaseModel where id = :id")
+    @Query("Delete from todoitem where id = :id")
     void deleteById(int id);
 
     @Delete
